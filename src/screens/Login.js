@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Text, View, Button, Alert, TextInput} from 'react-native';
 //import AsyncStorage from '@react-native-community/async-storage';
 
-import firebaseSvc from '../FirebaseSvc';
+import firebaseSvc from '../../FirebaseSvc';
 
 export class Login extends Component {
   state = {

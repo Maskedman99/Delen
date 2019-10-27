@@ -50,6 +50,10 @@ export class Login extends Component {
           onChangeText={this.onChangeTextPassword}
         />
         <Button title="Login" onPress={this.onPressLogin} />
+        <Button
+          title="Create an Account"
+          onPress={() => this.props.navigation.navigate('CreateAccountScreen')}
+        />
       </View>
     );
   }

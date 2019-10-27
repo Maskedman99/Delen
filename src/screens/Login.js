@@ -1,5 +1,13 @@
 import React, {Component} from 'react';
-import {Text, View, Button, Alert, TextInput} from 'react-native';
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  Alert,
+  TextInput,
+  StyleSheet,
+  StatusBar,
+} from 'react-native';
 //import AsyncStorage from '@react-native-community/async-storage';
 
 import PasswordTextInput from '../components/PasswordInputText';
@@ -38,26 +46,63 @@ export class Login extends Component {
   render() {
     return (
       <View>
-        <Text>Username</Text>
+        <StatusBar hidden={true} />
+        <Text style={styles.title}>E-mail address</Text>
         <TextInput
-          value={this.state.email}
+          style={styles.nameInput}
+          placeHolder={this.state.email}
+          placeholderTextColor="black"
+          keyboardType="email-address"
           onChangeText={this.onChangeTextEmail}
+          value={this.state.email}
         />
-        <Text>Password</Text>
+        <Text style={styles.title}>Password</Text>
         <PasswordTextInput
           placeholder="enter password"
           label="Password"
           value={this.state.password}
           onChangeText={password => this.setState({password})}
         />
-        <Button title="Login" onPress={this.onPressLogin} />
-        <Button
-          title="Create an Account"
-          onPress={() => this.props.navigation.navigate('CreateAccountScreen')}
-        />
+
+        <TouchableOpacity style={styles.button} onPress={this.onPressLogin}>
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => this.props.navigation.navigate('CreateAccountScreen')}>
+          <Text style={styles.buttonText}>Sign Up</Text>
+        </TouchableOpacity>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  title: {
+    margin: 16,
+    fontSize: 16,
+  },
+  nameInput: {
+    height: 50,
+    marginHorizontal: 16,
+    borderColor: 'black',
+    borderWidth: 1,
+    fontSize: 16,
+    borderRadius: 2,
+  },
+  buttonText: {
+    fontSize: 18,
+    textAlign: 'center',
+    margin: 15,
+  },
+  button: {
+    marginHorizontal: 16,
+    marginTop: 32,
+    backgroundColor: '#39ff14',
+    borderRadius: 2,
+    borderColor: 'black',
+    borderWidth: 1,
+  },
+});
 
 export default Login;

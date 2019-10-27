@@ -1,27 +1,19 @@
 import React from 'react';
-//import {ImagePicker, Permissions} from 'expo';
 import {
   StyleSheet,
   Text,
   TextInput,
   View,
-  Button,
-  //  Alert,
-  //  ImageEditor,
+  TouchableOpacity,
 } from 'react-native';
-//import ImagePicker from 'react-native-image-picker';
+import PasswordTextInput from '../components/PasswordInputText';
 import firebaseSvc from '../../FirebaseSvc';
 
 class CreateAccount extends React.Component {
-  static navigationOptions = {
-    title: 'Scv Chatter',
-  };
-
   state = {
-    name: 'enter your name',
-    email: 'testc@gmail.com',
-    password: 'testcpass',
-    avatar: '',
+    name: '',
+    email: '',
+    password: '',
   };
 
   onPressCreate = async () => {
@@ -38,7 +30,6 @@ class CreateAccount extends React.Component {
   };
 
   onChangeTextEmail = email => this.setState({email});
-  onChangeTextPassword = password => this.setState({password});
   onChangeTextName = name => this.setState({name});
 
   render() {
@@ -47,55 +38,56 @@ class CreateAccount extends React.Component {
         <Text style={styles.title}>Email:</Text>
         <TextInput
           style={styles.nameInput}
-          placeHolder="test3@gmail.com"
+          placeHolder="enter your e-mail"
+          placeholderTextColor="black"
+          keyboardType="email-address"
           onChangeText={this.onChangeTextEmail}
-          value={this.state.email}
         />
         <Text style={styles.title}>Password:</Text>
-        <TextInput
-          style={styles.nameInput}
-          onChangeText={this.onChangeTextPassword}
+        <PasswordTextInput
+          placeholder="enter password"
+          label="Password"
           value={this.state.password}
+          onChangeText={password => this.setState({password})}
         />
         <Text style={styles.title}>Name:</Text>
         <TextInput
           style={styles.nameInput}
           onChangeText={this.onChangeTextName}
-          value={this.state.name}
         />
-        <Button
-          title="Create Account"
-          style={styles.buttonText}
-          onPress={this.onPressCreate}
-        />
-        <Button
-          title="Upload Avatar Image"
-          style={styles.buttonText}
-          onPress={this.onImageUpload}
-        />
+        <TouchableOpacity style={styles.button} onPress={this.onPressCreate}>
+          <Text style={styles.buttonText}>Create Account</Text>
+        </TouchableOpacity>
       </View>
     );
   }
 }
 
-const offset = 16;
 const styles = StyleSheet.create({
   title: {
-    marginTop: offset,
-    marginLeft: offset,
-    fontSize: offset,
+    margin: 16,
+    fontSize: 16,
   },
   nameInput: {
-    height: offset * 3,
-    margin: offset,
-    paddingHorizontal: offset,
-    borderColor: '#111111',
+    height: 50,
+    marginHorizontal: 16,
+    borderColor: 'black',
     borderWidth: 1,
-    fontSize: offset,
+    fontSize: 16,
+    borderRadius: 2,
   },
   buttonText: {
-    marginLeft: offset,
-    fontSize: 42,
+    fontSize: 18,
+    textAlign: 'center',
+    margin: 15,
+  },
+  button: {
+    margin: 16,
+    marginTop: 64,
+    backgroundColor: '#39ff14',
+    borderRadius: 2,
+    borderColor: 'black',
+    borderWidth: 1,
   },
 });
 

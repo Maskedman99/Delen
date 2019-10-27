@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Text, View, Button, Alert, TextInput} from 'react-native';
 //import AsyncStorage from '@react-native-community/async-storage';
 
+import PasswordTextInput from '../components/PasswordInputText';
 import firebaseSvc from '../../FirebaseSvc';
 
 export class Login extends Component {
@@ -33,21 +34,21 @@ export class Login extends Component {
 
   // methods to handle user input and update the state
   onChangeTextEmail = email => this.setState({email});
-  onChangeTextPassword = password => this.setState({password});
 
   render() {
     return (
       <View>
-        <Text>My Login Screen</Text>
         <Text>Username</Text>
         <TextInput
           value={this.state.email}
           onChangeText={this.onChangeTextEmail}
         />
         <Text>Password</Text>
-        <TextInput
+        <PasswordTextInput
+          placeholder="enter password"
+          label="Password"
           value={this.state.password}
-          onChangeText={this.onChangeTextPassword}
+          onChangeText={password => this.setState({password})}
         />
         <Button title="Login" onPress={this.onPressLogin} />
         <Button

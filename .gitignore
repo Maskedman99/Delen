@@ -59,3 +59,4 @@ buck-out/
 /ios/Pods/
 
 # Firebase, Since it contains api keys
+/src/config/firebaseconfig.js

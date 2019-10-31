@@ -15,8 +15,8 @@ import firebaseSvc from '../../FirebaseSvc';
 
 export class Login extends Component {
   state = {
-    email: 'testA@gmail.com',
-    password: 'testapass',
+    email: 'testC@gmail.com',
+    password: 'testcpass',
   };
 
   // add login method to handle user press Login button

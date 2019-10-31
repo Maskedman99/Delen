@@ -16,7 +16,7 @@ export default class Chat extends React.Component {
         }}
         user={{
           _id: firebaseSvc.getUid(),
-          name: this.props.username,
+          name: firebaseSvc.getDisplayName(),
         }}
       />
     );

@@ -26,12 +26,6 @@ class FirebaseSvc {
       .createUserWithEmailAndPassword(user.email, user.password)
       .then(
         function() {
-          console.log(
-            'created user successfully. User email:' +
-              user.email +
-              ' name:' +
-              user.name,
-          );
           var userf = firebase.auth().currentUser;
           userf.updateProfile({displayName: user.name}).then(
             function() {
@@ -60,6 +54,10 @@ class FirebaseSvc {
   getUid() {
     return (firebase.auth().currentUser || {}).uid;
   }
+  getDisplayName() {
+    return (firebase.auth().currentUser || {}).displayName;
+  }
+
   // retrieve the messages from the Backend
   loadMessages(callback) {
     this.messagesRef = firebase.database().ref('messages');

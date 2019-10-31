@@ -58,5 +58,6 @@ buck-out/
 # CocoaPods
 /ios/Pods/
 
+
 # Firebase, Since it contains api keys
-/src/config/firebaseconfig.js
+/src/config/firebaseconfigs.js

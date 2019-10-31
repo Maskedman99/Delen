@@ -1,7 +1,7 @@
 import firebase from 'firebase';
 import {Alert} from 'react-native';
 
-import {firebaseConfig} from './src/config/firsbaseconfigs';
+import {firebaseConfig} from './src/config/firebaseconfigs';
 
 class FirebaseSvc {
   uid = '';

@@ -1,3 +1,5 @@
+// Enter the Details from your Firebase Project Console.
+
 export const firebaseConfig = {
   apiKey: '<your-api-key>',
   authDomain: '<your-auth-domain>',
